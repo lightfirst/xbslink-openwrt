@@ -1,0 +1,11 @@
+{
+	"admin/network/xbslink": {
+		"title": "XBSlink",
+		"order": 65,
+		"action": { "type": "view", "path": "xbslink/overview" },
+		"depends": {
+			"acl": ["luci-app-xbslink"],
+			"uci": { "xbslink": true }
+		}
+	}
+}

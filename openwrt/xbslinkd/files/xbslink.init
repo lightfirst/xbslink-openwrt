@@ -1,0 +1,120 @@
+#!/bin/sh /etc/rc.common
+# procd init script for xbslinkd (UCI -> CLI flags)
+
+USE_PROCD=1
+START=99
+STOP=10
+
+FW_RULE_NAME="Allow-XBSlink"
+
+xbslink_fw_rule_add() {
+        local port="$1"
+        # already configured?
+        [ "$(uci -q get firewall."$FW_RULE_NAME")" = "rule" ] && return 0
+        uci -q set firewall."$FW_RULE_NAME"="rule"
+        uci -q set firewall."$FW_RULE_NAME".name="$FW_RULE_NAME"
+        uci -q set firewall."$FW_RULE_NAME".src='wan'
+        uci -q set firewall."$FW_RULE_NAME".proto='udp'
+        uci -q set firewall."$FW_RULE_NAME".dest_port="$port"
+        uci -q set firewall."$FW_RULE_NAME".family='ipv4'
+        uci -q set firewall."$FW_RULE_NAME".target='ACCEPT'
+        uci commit firewall
+        /etc/init.d/firewall reload 2>/dev/null
+        logger -t xbslink "opened WAN udp/$port for node communication"
+}
+
+xbslink_fw_rule_remove() {
+        [ "$(uci -q get firewall."$FW_RULE_NAME")" = "rule" ] || return 0
+        uci -q delete firewall."$FW_RULE_NAME"
+        uci commit firewall
+        /etc/init.d/firewall reload 2>/dev/null
+}
+
+append_peer() {
+        local p="$1"
+        [ -n "$p" ] || return 0
+        peers="${peers:+$peers,}$p"
+}
+
+start_service() {
+        local enabled interface nickname port
+        local special_macs forward_high_port_broadcasts allow_wellknown_ports gateway_ips
+        local cloud_enabled cloud_server cloud_name cloud_password cloud_max_nodes node_ip
+        local status_port status_file verbose peers=""
+
+        config_load xbslink
+        config_get_bool enabled config enabled 0
+        [ "$enabled" = 1 ] || return 0
+
+        config_get interface config interface "br-lan"
+        config_get nickname config nickname "OpenWrt"
+        config_get port config port 31415
+        config_get special_macs config special_macs ""
+        config_get_bool forward_high_port_broadcasts config forward_high_port_broadcasts 0
+        config_get_bool allow_wellknown_ports config allow_wellknown_ports 0
+        config_get gateway_ips config gateway_ips ""
+        config_get_bool cloud_enabled config cloud_enabled 0
+        config_get cloud_server config cloud_server "http://www.secudb.de/~seuffert/xbslink/cloudlist/"
+        config_get cloud_name config cloud_name ""
+        config_get cloud_password config cloud_password ""
+        config_get cloud_max_nodes config cloud_max_nodes 10
+        config_get node_ip config node_ip ""
+        config_get status_port config status_port 31416
+        config_get status_file config status_file "/var/run/xbslinkd/status.json"
+        config_get_bool verbose config verbose 0
+
+        local args=""
+        args="$args --interface $interface"
+        args="$args --port $port"
+        args="$args --nickname $nickname"
+
+        [ -n "$special_macs" ] && args="$args --special-macs $special_macs"
+        [ "$forward_high_port_broadcasts" = 1 ] && args="$args --forward-high-port-broadcasts"
+        [ "$allow_wellknown_ports" = 1 ] && args="$args --allow-wellknown-ports"
+        [ -n "$gateway_ips" ] && args="$args --gateway-ips $gateway_ips"
+
+        if [ "$cloud_enabled" = 1 ] && [ -n "$cloud_name" ]; then
+                args="$args --cloudserver $cloud_server"
+                args="$args --cloudname $cloud_name"
+                [ -n "$cloud_password" ] && args="$args --password $cloud_password"
+                args="$args --max-nodes $cloud_max_nodes"
+                [ -n "$node_ip" ] && args="$args --node-ip $node_ip"
+                xbslink_fw_rule_add "$port"
+        fi
+
+        config_list_foreach config peers append_peer
+        [ -n "$peers" ] && args="$args --peers $peers"
+
+        [ -n "$status_file" ] && args="$args --status-file $status_file"
+        [ "$status_port" -gt 0 ] 2>/dev/null && args="$args --status-port $status_port"
+        [ "$verbose" = 1 ] && args="$args --verbose"
+
+        [ -n "$status_file" ] && mkdir -p "$(dirname "$status_file")" 2>/dev/null
+
+        procd_open_instance
+        procd_set_param command /usr/bin/xbslinkd $args
+        procd_set_param respawn 3600 5 0
+        procd_set_param stdout 1
+        procd_set_param stderr 1
+        procd_close_instance
+}
+
+stop_service() {
+        # say goodbye to peers quickly instead of waiting for timeouts
+        logger -t xbslink "service stopped"
+}
+
+reload_service() {
+        restart
+}
+
+restart() {
+        stop
+        xbslink_fw_rule_remove
+        sleep 1
+        start
+}
+
+service_triggers() {
+        procd_add_reload_trigger "xbslink"
+}

@@ -1,0 +1,17 @@
+{
+	"luci-app-xbslink": {
+		"description": "Grant access to XBSlink status and settings",
+		"read": {
+			"uci": ["xbslink"],
+			"file": {
+				"/var/run/xbslinkd/status.json": ["read"]
+			}
+		},
+		"write": {
+			"uci": ["xbslink"],
+			"file": {
+				"/etc/init.d/xbslink": ["exec"]
+			}
+		}
+	}
+}
