@@ -93,8 +93,9 @@
 
 ## 4. 云（cloudlist）HTTP 协议（`xbs_cloudlist.cs` + `index.php`）
 
-服务器 URL 默认 `http://www.secudb.de/~seuffert/xbslink/cloudlist/`（官方服务器现已
-停服，可自建：本仓库 `cloudlist/index.php`）。全部为 HTTP GET，响应为纯文本行，
+本移植的默认 URL 为 `http://10.165.0.105/cloudlist.php`（私有云列表服务）。原版默认
+`http://www.secudb.de/~seuffert/xbslink/cloudlist/` 官方服务器现已停服，可自建：本仓库
+`cloudlist/index.php`。全部为 HTTP GET，响应为纯文本行，
 首行 `OK:...` 或 `ERROR:...`。服务器节点超时 70s，客户端每 **29s** UPDATE 一次。
 
 | 命令 | GET 参数 | 响应 |

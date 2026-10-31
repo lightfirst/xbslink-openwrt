@@ -36,6 +36,10 @@ append_peer() {
         peers="${peers:+$peers,}$p"
 }
 
+append_special() {
+        special_macs="${special_macs:+$special_macs,}$1"
+}
+
 start_service() {
         local enabled interface nickname port
         local special_macs forward_high_port_broadcasts allow_wellknown_ports gateway_ips
@@ -49,12 +53,16 @@ start_service() {
         config_get interface config interface "br-lan"
         config_get nickname config nickname "OpenWrt"
         config_get port config port 31415
-        config_get special_macs config special_macs ""
+        # special_macs may be a UCI list (LuCI DynamicList) or a legacy plain
+        # option with a comma separated string - support both.
+        special_macs=""
+        config_list_foreach config special_macs append_special
+        [ -z "$special_macs" ] && config_get special_macs config special_macs ""
         config_get_bool forward_high_port_broadcasts config forward_high_port_broadcasts 0
         config_get_bool allow_wellknown_ports config allow_wellknown_ports 0
         config_get gateway_ips config gateway_ips ""
         config_get_bool cloud_enabled config cloud_enabled 0
-        config_get cloud_server config cloud_server "http://www.secudb.de/~seuffert/xbslink/cloudlist/"
+        config_get cloud_server config cloud_server "http://10.165.0.105/cloudlist.php"
         config_get cloud_name config cloud_name ""
         config_get cloud_password config cloud_password ""
         config_get cloud_max_nodes config cloud_max_nodes 10

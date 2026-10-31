@@ -1,0 +1,176 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+msgid "xbslinkd restarted"
+msgstr "xbslinkd 已重启"
+
+msgid "Restart failed: %s"
+msgstr "重启失败：%s"
+
+msgid "Loading status…"
+msgstr "状态加载中…"
+
+msgid "joined \"%s\""
+msgstr "已加入房间 \"%s\""
+
+msgid "port unreachable"
+msgstr "端口不可达"
+
+msgid "not joined"
+msgstr "未加入房间"
+
+msgid "off"
+msgstr "关闭"
+
+msgid "Up %s · local node %s:%d · capture %s · cloud %s · captured %s frames / injected %s"
+msgstr "已运行 %s · 本地节点 %s:%d · 抓包接口 %s · 云端 %s · 已捕获 %s 帧 / 已注入 %s"
+
+msgid "No remote nodes connected"
+msgstr "没有远程节点连接"
+
+msgid "Node"
+msgstr "节点"
+
+msgid "Nickname"
+msgstr "昵称"
+
+msgid "Version"
+msgstr "版本"
+
+msgid "Ping"
+msgstr "延迟"
+
+msgid "Devices"
+msgstr "设备数"
+
+msgid "RX (bytes / pkts)"
+msgstr "接收 (字节 / 包数)"
+
+msgid "TX (bytes / pkts)"
+msgstr "发送 (字节 / 包数)"
+
+msgid "Cannot read %s: %s - check that xbslinkd is running"
+msgstr "无法读取 %s：%s - 请检查 xbslinkd 是否在运行"
+
+msgid "xbslinkd is not running or has not written a status file yet."
+msgstr "xbslinkd 未运行，或尚未写入状态文件。"
+
+msgid "XBSlink System Link Proxy"
+msgstr "XBSlink 系统联机代理"
+
+msgid "Go rewrite of XBSlink, wire-compatible with the original XBSlink clients. Tunnels Xbox/PS3 system link LAN traffic between remote nodes over the internet."
+msgstr "XBSlink 的 Go 语言重写版，与原版 XBSlink 客户端线路协议兼容。通过互联网在远程节点之间转发 Xbox/PS3 系统联机的局域网流量。"
+
+msgid "Settings applied, xbslinkd restarted"
+msgstr "设置已应用，xbslinkd 已重启"
+
+msgid "Apply/restart failed: %s"
+msgstr "应用/重启失败：%s"
+
+msgid "Live Status"
+msgstr "实时状态"
+
+msgid "Basic Settings"
+msgstr "基本设置"
+
+msgid "Enabled"
+msgstr "启用"
+
+msgid "Capture interface"
+msgstr "抓包设备"
+
+msgid "LAN side to listen for console traffic. Select the LAN bridge - every bridge port is monitored automatically."
+msgstr "抓包设备需与游戏主机在同一网络。选择 LAN 网桥 - 网桥上的每个端口都会被自动监听。"
+
+msgid "Shown to other XBSlink nodes"
+msgstr "显示给其他 XBSlink 节点的名称"
+
+msgid "Node port"
+msgstr "监听端口"
+
+msgid "UDP port for node-to-node traffic. Keep 31415 for original-client compatibility."
+msgstr "节点间通信的 UDP 端口。为兼容原版客户端请保持 31415。"
+
+msgid "Static peers"
+msgstr "直连远程主机"
+
+msgid "Remote nodes to announce to at startup, e.g. 1.2.3.4:31415 or a dyndns host. Nodes learn each other automatically afterwards."
+msgstr "启动时直连的远程主机，例如 1.2.3.4:31415 或动态域名。之后主机之间会自动互相发现。"
+
+msgid "Forward all high-port UDP broadcasts"
+msgstr "转发高位端口广播"
+
+msgid "Tunnel every UDP broadcast with destination port >= 1024 (needed by some PS3/PS4 games)."
+msgstr "转发所有目标端口 >= 1024 的 UDP 广播（部分 PS3/PS4 游戏需要）。"
+
+msgid "Service control"
+msgstr "服务控制"
+
+msgid "Save & Apply, then restart xbslinkd"
+msgstr "保存并应用，然后重启 xbslinkd"
+
+msgid "Cloud node discovery"
+msgstr "云列表节点发现"
+
+msgid "Discover remote nodes through a cloudlist server. The official xbslink.de server is offline - point this at your own instance (the self-hosted PHP server ships with xbslinkd)."
+msgstr "通过云列表服务器发现远程节点。默认指向内置的私有云列表服务 - 也可以换成自建实例（xbslinkd 附带可自行架设的 PHP 服务器）。"
+
+msgid "Use cloud"
+msgstr "使用云列表"
+
+msgid "Cloud server URL"
+msgstr "云列表服务器 URL"
+
+msgid "Cloud name"
+msgstr "房间名称"
+
+msgid "Cloud password"
+msgstr "密码"
+
+msgid "Only checked when creating a new cloud."
+msgstr "仅在创建新房间时校验。"
+
+msgid "Max nodes"
+msgstr "最大人数"
+
+msgid "Registered node IP"
+msgstr "注册节点 IP"
+
+msgid "Leave empty for auto detection. Private IPs are replaced by the server with your public IP."
+msgstr "留空则自动检测。内网 IP 会被服务器替换为你的公网 IP。"
+
+msgid "Advanced Settings"
+msgstr "高级设置"
+
+msgid "Always tunnel these MACs"
+msgstr "“始终转发”MAC 列表"
+
+msgid "One MAC per line, press \"+\" to add more. Formats: aa:bb:cc:dd:ee:ff, aa-bb-cc-dd-ee-ff or aabbccddeeff (the colon-less format of the Windows XBSlink client works too). While this list is NOT empty, ONLY frames from these devices are tunneled (original XBSlink \"only forward special MACs\" mode)."
+msgstr "每行一个 MAC，按 \"+\" 添加。格式：aa:bb:cc:dd:ee:ff、aa-bb-cc-dd-ee-ff 或 aabbccddeeff（Windows 版 XBSlink 客户端的无冒号格式也可以）。注意：此列表非空时，将只转发这些设备的帧（相当于 Windows 版勾选\"只转发这些设备\"）。"
+
+msgid "Not a MAC address: expected aa:bb:cc:dd:ee:ff or aabbccddeeff"
+msgstr "不是有效的 MAC 地址：应为 aa:bb:cc:dd:ee:ff 或 aabbccddeeff"
+
+msgid "Allow ports below 1024"
+msgstr "允许知名端口（<1024）"
+
+msgid "Do not exclude TCP/UDP destination ports < 1024 from the tunnel."
+msgstr "不把目标端口 < 1024 的 TCP/UDP 流量排除在隧道之外。"
+
+msgid "Excluded gateway IPs"
+msgstr "排除网关 IP"
+
+msgid "Comma separated. Automatically detected from the routing table when empty."
+msgstr "逗号分隔。留空时从路由表自动检测。"
+
+msgid "Status HTTP port"
+msgstr "状态 HTTP 端口"
+
+msgid "Local-only JSON endpoint on 127.0.0.1, 0 disables it."
+msgstr "仅本机 (127.0.0.1) 可访问的 JSON 端点，0 表示禁用。"
+
+msgid "Verbose logging"
+msgstr "详细日志"
+
+msgid "Log every tunneled frame to the system log (debugging only!)."
+msgstr "把每一条隧道帧都记录到系统日志（仅用于调试！）。"

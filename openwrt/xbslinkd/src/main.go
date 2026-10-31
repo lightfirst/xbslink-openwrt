@@ -1,7 +1,7 @@
 // Package main: xbslinkd - a Go rewrite of XBSlink (seuffert/XBSlink) core,
 // targeted at OpenWrt and other embedded Linux systems.
 //
-// Wire-protocol compatible with XBSlink v0.9.6.0 (see docs/PROTOCOL.md).
+// Wire-protocol compatible with XBSlink v0.9.7.5 (see docs/PROTOCOL.md).
 // SPDX-License-Identifier: GPL-2.0-or-later
 package main
 
@@ -14,13 +14,13 @@ import (
 )
 
 const (
-        protoVersion = "0.9.6.0" // reported to peers/cloud for max compatibility
+        protoVersion = "0.9.7.5" // reported to peers/cloud, matches Windows XBSlink 0.9.7.5
         appName      = "xbslinkd"
 )
 
 // appVersion can be overridden at link time:
 // -ldflags "-X github.com/xbslink/xbslinkd.appVersion=1.2.3"
-var appVersion = "1.0.0"
+var appVersion = "0.9.7.5"
 
 func main() {
         cfg, err := ParseFlags(os.Args[1:])

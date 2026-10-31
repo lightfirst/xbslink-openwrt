@@ -57,8 +57,8 @@
    产物位置：
 
    ```
-   bin/packages/<你的架构>/xbslinkd_1.0.0-1_<架构>.ipk
-   bin/packages/<你的架构>/luci-app-xbslink_1.0.0-1_all.ipk
+   bin/packages/<你的架构>/xbslinkd_0.9.7.5-1_<架构>.ipk
+   bin/packages/<你的架构>/luci-app-xbslink_0.9.7.5-1_all.ipk
    ```
 
 5. 安装到路由器：

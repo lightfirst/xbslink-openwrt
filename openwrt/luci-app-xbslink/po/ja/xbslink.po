@@ -1,0 +1,176 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+msgid "xbslinkd restarted"
+msgstr "xbslinkd を再起動しました"
+
+msgid "Restart failed: %s"
+msgstr "再起動に失敗しました: %s"
+
+msgid "Loading status…"
+msgstr "状態を読み込み中…"
+
+msgid "joined \"%s\""
+msgstr "「%s」に参加中"
+
+msgid "port unreachable"
+msgstr "ポート到達不可"
+
+msgid "not joined"
+msgstr "未参加"
+
+msgid "off"
+msgstr "オフ"
+
+msgid "Up %s · local node %s:%d · capture %s · cloud %s · captured %s frames / injected %s"
+msgstr "稼働 %s · ローカルノード %s:%d · キャプチャ %s · クラウド %s · 取得 %s フレーム / 注入 %s"
+
+msgid "No remote nodes connected"
+msgstr "リモートノードは接続されていません"
+
+msgid "Node"
+msgstr "ノード"
+
+msgid "Nickname"
+msgstr "ニックネーム"
+
+msgid "Version"
+msgstr "バージョン"
+
+msgid "Ping"
+msgstr "Ping"
+
+msgid "Devices"
+msgstr "デバイス数"
+
+msgid "RX (bytes / pkts)"
+msgstr "受信 (バイト / パケット)"
+
+msgid "TX (bytes / pkts)"
+msgstr "送信 (バイト / パケット)"
+
+msgid "Cannot read %s: %s - check that xbslinkd is running"
+msgstr "%s を読み取れません: %s - xbslinkd が実行中か確認してください"
+
+msgid "xbslinkd is not running or has not written a status file yet."
+msgstr "xbslinkd が実行されていないか、ステータスファイルがまだ書き込まれていません。"
+
+msgid "XBSlink System Link Proxy"
+msgstr "XBSlink システムリンクプロキシ"
+
+msgid "Go rewrite of XBSlink, wire-compatible with the original XBSlink clients. Tunnels Xbox/PS3 system link LAN traffic between remote nodes over the internet."
+msgstr "XBSlink の Go 言語による再実装。オリジナルの XBSlink クライアントとプロトコル互換です。Xbox/PS3 のシステムリンク LAN トラフィックをインターネット経由でリモートノード間で転送します。"
+
+msgid "Settings applied, xbslinkd restarted"
+msgstr "設定を適用し、xbslinkd を再起動しました"
+
+msgid "Apply/restart failed: %s"
+msgstr "適用/再起動に失敗しました: %s"
+
+msgid "Live Status"
+msgstr "ライブステータス"
+
+msgid "Basic Settings"
+msgstr "基本設定"
+
+msgid "Enabled"
+msgstr "有効"
+
+msgid "Capture interface"
+msgstr "キャプチャインターフェース"
+
+msgid "LAN side to listen for console traffic. Select the LAN bridge - every bridge port is monitored automatically."
+msgstr "ゲーム機のトラフィックを待ち受ける LAN 側。LAN ブリッジを選択してください - ブリッジの全ポートが自動的に監視されます。"
+
+msgid "Shown to other XBSlink nodes"
+msgstr "他の XBSlink ノードに表示される名前"
+
+msgid "Node port"
+msgstr "ノードポート"
+
+msgid "UDP port for node-to-node traffic. Keep 31415 for original-client compatibility."
+msgstr "ノード間通信の UDP ポート。オリジナルクライアントとの互換性のため 31415 のままにしてください。"
+
+msgid "Static peers"
+msgstr "静的ピア"
+
+msgid "Remote nodes to announce to at startup, e.g. 1.2.3.4:31415 or a dyndns host. Nodes learn each other automatically afterwards."
+msgstr "起動時に通知するリモートノード。例: 1.2.3.4:31415 やダイナミック DNS ホスト。その後ノードは自動的に互いを発見します。"
+
+msgid "Forward all high-port UDP broadcasts"
+msgstr "全 high ポート UDP ブロードキャストを転送"
+
+msgid "Tunnel every UDP broadcast with destination port >= 1024 (needed by some PS3/PS4 games)."
+msgstr "宛先ポート 1024 以上の UDP ブロードキャストをすべてトンネルします（一部の PS3/PS4 ゲームで必要）。"
+
+msgid "Service control"
+msgstr "サービス制御"
+
+msgid "Save & Apply, then restart xbslinkd"
+msgstr "保存して適用し、xbslinkd を再起動"
+
+msgid "Cloud node discovery"
+msgstr "クラウドノード検出"
+
+msgid "Discover remote nodes through a cloudlist server. The official xbslink.de server is offline - point this at your own instance (the self-hosted PHP server ships with xbslinkd)."
+msgstr "クラウドリストサーバー経由でリモートノードを発見します。公式 xbslink.de サーバーはオフラインのため、自前のインスタンスを指定してください（xbslinkd にはセルフホスト用 PHP サーバーが同梱されています）。"
+
+msgid "Use cloud"
+msgstr "クラウドを使用"
+
+msgid "Cloud server URL"
+msgstr "クラウドサーバー URL"
+
+msgid "Cloud name"
+msgstr "クラウド名"
+
+msgid "Cloud password"
+msgstr "クラウドパスワード"
+
+msgid "Only checked when creating a new cloud."
+msgstr "新しいクラウドを作成する時にのみ確認されます。"
+
+msgid "Max nodes"
+msgstr "最大ノード数"
+
+msgid "Registered node IP"
+msgstr "登録ノード IP"
+
+msgid "Leave empty for auto detection. Private IPs are replaced by the server with your public IP."
+msgstr "空欄で自動検出。プライベート IP はサーバーによってグローバル IP に置き換えられます。"
+
+msgid "Advanced Settings"
+msgstr "詳細設定"
+
+msgid "Always tunnel these MACs"
+msgstr "常にトンネルする MAC"
+
+msgid "One MAC per line, press \"+\" to add more. Formats: aa:bb:cc:dd:ee:ff, aa-bb-cc-dd-ee-ff or aabbccddeeff (the colon-less format of the Windows XBSlink client works too). While this list is NOT empty, ONLY frames from these devices are tunneled (original XBSlink \"only forward special MACs\" mode)."
+msgstr "1 行に 1 つの MAC を入力し、\"+\" で追加します。書式: aa:bb:cc:dd:ee:ff、aa-bb-cc-dd-ee-ff、aabbccddeeff（Windows 版 XBSlink クライアントのコロン無し形式も使用可能）。このリストが空でない間は、これらのデバイスのフレームのみが転送されます（オリジナル XBSlink の「指定 MAC のみ転送」モード）。"
+
+msgid "Not a MAC address: expected aa:bb:cc:dd:ee:ff or aabbccddeeff"
+msgstr "MAC アドレスが不正です: aa:bb:cc:dd:ee:ff または aabbccddeeff を指定してください"
+
+msgid "Allow ports below 1024"
+msgstr "1024 未満のポートを許可"
+
+msgid "Do not exclude TCP/UDP destination ports < 1024 from the tunnel."
+msgstr "宛先ポート 1024 未満の TCP/UDP をトンネルから除外しません。"
+
+msgid "Excluded gateway IPs"
+msgstr "除外するゲートウェイ IP"
+
+msgid "Comma separated. Automatically detected from the routing table when empty."
+msgstr "カンマ区切り。空欄の場合はルーティングテーブルから自動検出されます。"
+
+msgid "Status HTTP port"
+msgstr "ステータス HTTP ポート"
+
+msgid "Local-only JSON endpoint on 127.0.0.1, 0 disables it."
+msgstr "127.0.0.1 のみで待ち受ける JSON エンドポイント。0 で無効化。"
+
+msgid "Verbose logging"
+msgstr "詳細ログ"
+
+msgid "Log every tunneled frame to the system log (debugging only!)."
+msgstr "トンネルした全フレームをシステムログに記録します（デバッグ用！）。"

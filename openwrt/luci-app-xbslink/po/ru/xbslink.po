@@ -1,0 +1,176 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+msgid "xbslinkd restarted"
+msgstr "xbslinkd перезапущен"
+
+msgid "Restart failed: %s"
+msgstr "Ошибка перезапуска: %s"
+
+msgid "Loading status…"
+msgstr "Загрузка состояния…"
+
+msgid "joined \"%s\""
+msgstr "подключён к \"%s\""
+
+msgid "port unreachable"
+msgstr "порт недоступен"
+
+msgid "not joined"
+msgstr "не подключён"
+
+msgid "off"
+msgstr "выкл"
+
+msgid "Up %s · local node %s:%d · capture %s · cloud %s · captured %s frames / injected %s"
+msgstr "Время работы %s · локальный узел %s:%d · захват %s · облако %s · перехвачено %s кадров / передано %s"
+
+msgid "No remote nodes connected"
+msgstr "Нет подключённых удалённых узлов"
+
+msgid "Node"
+msgstr "Узел"
+
+msgid "Nickname"
+msgstr "Имя"
+
+msgid "Version"
+msgstr "Версия"
+
+msgid "Ping"
+msgstr "Задержка"
+
+msgid "Devices"
+msgstr "Устройства"
+
+msgid "RX (bytes / pkts)"
+msgstr "Получено (байт / пакетов)"
+
+msgid "TX (bytes / pkts)"
+msgstr "Отправлено (байт / пакетов)"
+
+msgid "Cannot read %s: %s - check that xbslinkd is running"
+msgstr "Не удалось прочитать %s: %s — проверьте, что xbslinkd запущен"
+
+msgid "xbslinkd is not running or has not written a status file yet."
+msgstr "xbslinkd не запущен или ещё не записал файл состояния."
+
+msgid "XBSlink System Link Proxy"
+msgstr "Прокси системных линков XBSlink"
+
+msgid "Go rewrite of XBSlink, wire-compatible with the original XBSlink clients. Tunnels Xbox/PS3 system link LAN traffic between remote nodes over the internet."
+msgstr "Переписанная на Go версия XBSlink, совместимая по протоколу с оригинальными клиентами. Передаёт LAN-трафик системного линка Xbox/PS3 между удалёнными узлами через интернет."
+
+msgid "Settings applied, xbslinkd restarted"
+msgstr "Настройки применены, xbslinkd перезапущен"
+
+msgid "Apply/restart failed: %s"
+msgstr "Ошибка применения/перезапуска: %s"
+
+msgid "Live Status"
+msgstr "Состояние в реальном времени"
+
+msgid "Basic Settings"
+msgstr "Основные настройки"
+
+msgid "Enabled"
+msgstr "Включено"
+
+msgid "Capture interface"
+msgstr "Интерфейс захвата"
+
+msgid "LAN side to listen for console traffic. Select the LAN bridge - every bridge port is monitored automatically."
+msgstr "Локальная сеть для приёма трафика консолей. Выберите LAN-мост — каждый порт моста отслеживается автоматически."
+
+msgid "Shown to other XBSlink nodes"
+msgstr "Отображаемое имя для других узлов XBSlink"
+
+msgid "Node port"
+msgstr "Порт узла"
+
+msgid "UDP port for node-to-node traffic. Keep 31415 for original-client compatibility."
+msgstr "UDP-порт для связи между узлами. Для совместимости с оригинальными клиентами оставьте 31415."
+
+msgid "Static peers"
+msgstr "Статические узлы"
+
+msgid "Remote nodes to announce to at startup, e.g. 1.2.3.4:31415 or a dyndns host. Nodes learn each other automatically afterwards."
+msgstr "Удалённые узлы, которым рассылается объявление при запуске, напр. 1.2.3.4:31415 или имя dyndns. Далее узлы обнаруживают друг друга автоматически."
+
+msgid "Forward all high-port UDP broadcasts"
+msgstr "Передавать все UDP-широковещания на порты >= 1024"
+
+msgid "Tunnel every UDP broadcast with destination port >= 1024 (needed by some PS3/PS4 games)."
+msgstr "Туннелировать все UDP-широковещания с портом назначения >= 1024 (нужно некоторым играм PS3/PS4)."
+
+msgid "Service control"
+msgstr "Управление службой"
+
+msgid "Save & Apply, then restart xbslinkd"
+msgstr "Сохранить, применить и перезапустить xbslinkd"
+
+msgid "Cloud node discovery"
+msgstr "Поиск узлов через облако"
+
+msgid "Discover remote nodes through a cloudlist server. The official xbslink.de server is offline - point this at your own instance (the self-hosted PHP server ships with xbslinkd)."
+msgstr "Поиск удалённых узлов через сервер списков облака. Официальный сервер xbslink.de отключён — укажите собственный экземпляр (в xbslinkd входит PHP-сервер для самостоятельного размещения)."
+
+msgid "Use cloud"
+msgstr "Использовать облако"
+
+msgid "Cloud server URL"
+msgstr "URL сервера облака"
+
+msgid "Cloud name"
+msgstr "Имя облака"
+
+msgid "Cloud password"
+msgstr "Пароль облака"
+
+msgid "Only checked when creating a new cloud."
+msgstr "Проверяется только при создании нового облака."
+
+msgid "Max nodes"
+msgstr "Макс. узлов"
+
+msgid "Registered node IP"
+msgstr "IP для регистрации узла"
+
+msgid "Leave empty for auto detection. Private IPs are replaced by the server with your public IP."
+msgstr "Оставьте пустым для автоопределения. Частные IP заменяются сервером на ваш публичный IP."
+
+msgid "Advanced Settings"
+msgstr "Дополнительные настройки"
+
+msgid "Always tunnel these MACs"
+msgstr "Всегда туннелировать эти MAC"
+
+msgid "One MAC per line, press \"+\" to add more. Formats: aa:bb:cc:dd:ee:ff, aa-bb-cc-dd-ee-ff or aabbccddeeff (the colon-less format of the Windows XBSlink client works too). While this list is NOT empty, ONLY frames from these devices are tunneled (original XBSlink \"only forward special MACs\" mode)."
+msgstr "Один MAC в строке, кнопка \"+\" добавляет новые. Форматы: aa:bb:cc:dd:ee:ff, aa-bb-cc-dd-ee-ff или aabbccddeeff (подходит и формат без двоеточий, как в XBSlink для Windows). Пока список НЕ пуст, передаются ТОЛЬКО кадры этих устройств (режим «передавать только выбранные MAC» оригинального XBSlink)."
+
+msgid "Not a MAC address: expected aa:bb:cc:dd:ee:ff or aabbccddeeff"
+msgstr "Некорректный MAC-адрес: ожидается aa:bb:cc:dd:ee:ff или aabbccddeeff"
+
+msgid "Allow ports below 1024"
+msgstr "Разрешить порты ниже 1024"
+
+msgid "Do not exclude TCP/UDP destination ports < 1024 from the tunnel."
+msgstr "Не исключать TCP/UDP с портами назначения < 1024 из туннеля."
+
+msgid "Excluded gateway IPs"
+msgstr "Исключённые IP шлюзов"
+
+msgid "Comma separated. Automatically detected from the routing table when empty."
+msgstr "Через запятую. Если пусто — определяется автоматически по таблице маршрутизации."
+
+msgid "Status HTTP port"
+msgstr "HTTP-порт состояния"
+
+msgid "Local-only JSON endpoint on 127.0.0.1, 0 disables it."
+msgstr "JSON-эндпоинт только для 127.0.0.1, 0 — отключить."
+
+msgid "Verbose logging"
+msgstr "Подробный журнал"
+
+msgid "Log every tunneled frame to the system log (debugging only!)."
+msgstr "Записывать каждый туннелируемый кадр в системный журнал (только для отладки!)."

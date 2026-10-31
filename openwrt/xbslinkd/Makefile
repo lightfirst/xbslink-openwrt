@@ -14,7 +14,7 @@ include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
 PKG_NAME:=xbslinkd
-PKG_VERSION:=1.0.0
+PKG_VERSION:=0.9.7.5
 PKG_RELEASE:=1
 
 PKG_MAINTAINER:=XBSlink OpenWrt port maintainers
@@ -58,15 +58,15 @@ define Package/xbslinkd/conffiles
 endef
 
 define Build/Prepare
-	mkdir -p $(PKG_BUILD_DIR)
-	$(CP) ./src/. $(PKG_BUILD_DIR)/
+        mkdir -p $(PKG_BUILD_DIR)
+        $(CP) ./src/. $(PKG_BUILD_DIR)/
 endef
 
 define Package/xbslinkd/install
-	$(call GoPackage/Package/Install/Bin,$(1))
-	$(INSTALL_DIR) $(1)/etc/config $(1)/etc/init.d
-	$(INSTALL_CONF) ./files/xbslink.config $(1)/etc/config/xbslink
-	$(INSTALL_BIN) ./files/xbslink.init $(1)/etc/init.d/xbslink
+        $(call GoPackage/Package/Install/Bin,$(1))
+        $(INSTALL_DIR) $(1)/etc/config $(1)/etc/init.d
+        $(INSTALL_CONF) ./files/xbslink.config $(1)/etc/config/xbslink
+        $(INSTALL_BIN) ./files/xbslink.init $(1)/etc/init.d/xbslink
 endef
 
 $(eval $(call GoBinPackage,xbslinkd))

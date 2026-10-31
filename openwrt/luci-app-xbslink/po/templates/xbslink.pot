@@ -1,0 +1,176 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+msgid "xbslinkd restarted"
+msgstr ""
+
+msgid "Restart failed: %s"
+msgstr ""
+
+msgid "Loading status…"
+msgstr ""
+
+msgid "joined \"%s\""
+msgstr ""
+
+msgid "port unreachable"
+msgstr ""
+
+msgid "not joined"
+msgstr ""
+
+msgid "off"
+msgstr ""
+
+msgid "Up %s · local node %s:%d · capture %s · cloud %s · captured %s frames / injected %s"
+msgstr ""
+
+msgid "No remote nodes connected"
+msgstr ""
+
+msgid "Node"
+msgstr ""
+
+msgid "Nickname"
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+msgid "Ping"
+msgstr ""
+
+msgid "Devices"
+msgstr ""
+
+msgid "RX (bytes / pkts)"
+msgstr ""
+
+msgid "TX (bytes / pkts)"
+msgstr ""
+
+msgid "Cannot read %s: %s - check that xbslinkd is running"
+msgstr ""
+
+msgid "xbslinkd is not running or has not written a status file yet."
+msgstr ""
+
+msgid "XBSlink System Link Proxy"
+msgstr ""
+
+msgid "Go rewrite of XBSlink, wire-compatible with the original XBSlink clients. Tunnels Xbox/PS3 system link LAN traffic between remote nodes over the internet."
+msgstr ""
+
+msgid "Settings applied, xbslinkd restarted"
+msgstr ""
+
+msgid "Apply/restart failed: %s"
+msgstr ""
+
+msgid "Live Status"
+msgstr ""
+
+msgid "Basic Settings"
+msgstr ""
+
+msgid "Enabled"
+msgstr ""
+
+msgid "Capture interface"
+msgstr ""
+
+msgid "LAN side to listen for console traffic. Select the LAN bridge - every bridge port is monitored automatically."
+msgstr ""
+
+msgid "Shown to other XBSlink nodes"
+msgstr ""
+
+msgid "Node port"
+msgstr ""
+
+msgid "UDP port for node-to-node traffic. Keep 31415 for original-client compatibility."
+msgstr ""
+
+msgid "Static peers"
+msgstr ""
+
+msgid "Remote nodes to announce to at startup, e.g. 1.2.3.4:31415 or a dyndns host. Nodes learn each other automatically afterwards."
+msgstr ""
+
+msgid "Forward all high-port UDP broadcasts"
+msgstr ""
+
+msgid "Tunnel every UDP broadcast with destination port >= 1024 (needed by some PS3/PS4 games)."
+msgstr ""
+
+msgid "Service control"
+msgstr ""
+
+msgid "Save & Apply, then restart xbslinkd"
+msgstr ""
+
+msgid "Cloud node discovery"
+msgstr ""
+
+msgid "Discover remote nodes through a cloudlist server. The official xbslink.de server is offline - point this at your own instance (the self-hosted PHP server ships with xbslinkd)."
+msgstr ""
+
+msgid "Use cloud"
+msgstr ""
+
+msgid "Cloud server URL"
+msgstr ""
+
+msgid "Cloud name"
+msgstr ""
+
+msgid "Cloud password"
+msgstr ""
+
+msgid "Only checked when creating a new cloud."
+msgstr ""
+
+msgid "Max nodes"
+msgstr ""
+
+msgid "Registered node IP"
+msgstr ""
+
+msgid "Leave empty for auto detection. Private IPs are replaced by the server with your public IP."
+msgstr ""
+
+msgid "Advanced Settings"
+msgstr ""
+
+msgid "Always tunnel these MACs"
+msgstr ""
+
+msgid "One MAC per line, press \"+\" to add more. Formats: aa:bb:cc:dd:ee:ff, aa-bb-cc-dd-ee-ff or aabbccddeeff (the colon-less format of the Windows XBSlink client works too). While this list is NOT empty, ONLY frames from these devices are tunneled (original XBSlink \"only forward special MACs\" mode)."
+msgstr ""
+
+msgid "Not a MAC address: expected aa:bb:cc:dd:ee:ff or aabbccddeeff"
+msgstr ""
+
+msgid "Allow ports below 1024"
+msgstr ""
+
+msgid "Do not exclude TCP/UDP destination ports < 1024 from the tunnel."
+msgstr ""
+
+msgid "Excluded gateway IPs"
+msgstr ""
+
+msgid "Comma separated. Automatically detected from the routing table when empty."
+msgstr ""
+
+msgid "Status HTTP port"
+msgstr ""
+
+msgid "Local-only JSON endpoint on 127.0.0.1, 0 disables it."
+msgstr ""
+
+msgid "Verbose logging"
+msgstr ""
+
+msgid "Log every tunneled frame to the system log (debugging only!)."
+msgstr ""

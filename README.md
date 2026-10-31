@@ -88,6 +88,43 @@ ssh root@192.168.1.1 "chmod +x /usr/bin/xbslinkd /etc/init.d/xbslink \
   && /etc/init.d/xbslink enable && /etc/init.d/xbslink start"
 ```
 
+### 方式 C：直接安装预编译 ipk（免编译）
+
+`openwrt/ipk/` 内附带免编译 ipk（`openwrt/build_ipk.sh` 可随时重新生成）：
+
+| 文件 | 说明 |
+| --- | --- |
+| `luci-app-xbslink_0.9.7.5-1_all.ipk` | 网页界面，架构无关（依赖 xbslinkd） |
+| `xbslinkd_0.9.7.5-1_<arch>.ipk` | 守护进程 + procd 服务 + UCI 配置 |
+| `luci-i18n-xbslink-<lang>_0.9.7.5-1_all.ipk` | 可选界面翻译（zh-cn / zh-tw / ja / ru） |
+
+`<arch>` 是 opkg 架构名，需与固件一致。在路由器上执行 `opkg print-architecture`
+确认（arm64 常见：`aarch64_cortex-a53` / `aarch64_cortex-a72` / `aarch64_generic`）：
+
+```sh
+opkg install xbslinkd_0.9.7.5-1_aarch64_cortex-a53.ipk   # 先装 daemon
+opkg install luci-app-xbslink_0.9.7.5-1_all.ipk          # 再装网页界面
+opkg install luci-i18n-xbslink-zh-cn_0.9.7.5-1_all.ipk   # 可选：简体中文翻译
+```
+
+翻译包装好后，在 LuCI「系统 -> 系统 -> 语言与界面风格」里选择语言并刷新页面即可
+（其他语言对应 `-zh-tw` / `-ja` / `-ru`）。简繁译文措辞与 Windows 汉化版对齐
+（房间名称、直连远程主机、监听端口、“始终转发”MAC 列表等）。译文以 `.lmo` 形式安装在
+`/usr/lib/lua/luci/i18n/xbslink.<lang>.lmo`。源文件在 `po/<语言>/xbslink.po`，
+重新编译需要 LuCI 的 po2lmo 工具（openwrt/luci 仓库 modules/luci-base/src）：
+
+```sh
+PO2LMO=/path/to/po2lmo ./build_ipk.sh    # 构建时自动重编译 .lmo
+```
+
+安装后到 LuCI「网络 -> XBSlink」配置：勾选启用、选抓包接口（br-lan）、填对端地址，
+保存并重启服务即可。注意：menu 依赖 `/etc/config/xbslink`，所以必须先装 xbslinkd 包。
+
+> 排错：若 `opkg install` 报 `pkg_init_from_file: Malformed package file`，
+> 一是文件传输损坏（用 `md5sum` 与本地核对），二是 opkg 过旧不认 Debian ar 格式
+> （本仓库 ipk 默认已是兼容全部 opkg 版本的 legacy tar.gz 格式；
+> `IPK_FORMAT=ar ./build_ipk.sh` 可改回 ar 格式）。
+
 ### 基本配置
 
 ```sh
@@ -112,13 +149,14 @@ logread | grep xbslink
 
 ### 云端联机（节点自动发现）
 
-原版官方云已下线，两种选择：
+原版官方云已下线。自 0.9.7.5 起，默认云端服务器指向私有云列表服务
+`http://10.165.0.105/cloudlist.php`，可在 LuCI 或 UCI 中修改。两种选择：
 
 1. **自建云**（推荐）：把 `cloudlist/index.php` 部署到任意 PHP+MySQL 主机
    （原版协议，无修改），然后：
    ```sh
    uci set xbslink.config.cloud_enabled='1'
-   uci set xbslink.config.cloud_server='http://your-server/cloudlist/'
+   uci set xbslink.config.cloud_server='http://your-server/cloudlist.php'
    uci set xbslink.config.cloud_name='我的房间'
    ```
    启用时 init 脚本自动在 WAN 区打开 `udp/31415`（云服务器会探测该端口可达性，
