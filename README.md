@@ -1,19 +1,32 @@
-xbslinkd — OpenWrt Port of XBSlink (Go Rewrite)
+# xbslinkd — OpenWrt Port of XBSlink (Go Rewrite)
 
-A port of seuffert/XBSlink (C# / .NET, Xbox 360 & PS3 system-link proxy) to OpenWrt: xbslinkd is a dependency-free, pure Go (no cgo/libpcap) daemon that is fully wire-protocol compatible with the original XBSlink client (original 0.9.6.0) and can network directly with it.
-text
+A port of [seuffert/XBSlink](https://github.com/seuffert/XBSlink) (C# / .NET, Xbox 360 & PS3 system-link proxy) to OpenWrt: **xbslinkd** is a dependency-free, pure Go (no cgo/libpcap) daemon that is **fully wire-protocol compatible with the original XBSlink client** (original 0.9.6.0) and can network directly with it.
 
-┌─────────────┐  packet capture on br-lan  ┌──────────────┐  UDP 31415  ┌──────────────┐  inject   ┌─────────────┐
-│ Xbox / PS3  │ ─────────────────────────► │  OpenWrt     │ ──────────► │ remote node   │ ────────► │ Xbox / PS3  │
-│  (local LAN)│ ◄───────────────────────── │  xbslinkd    │ ◄────────── │ XBSlink orig. │ ◄──────── │  (remote)   │
-└─────────────┘                            │  (on router) │  or other   │  / xbslinkd   │           └─────────────┘
-                                           └──────┬───────┘  instances  └──────┬───────┘
-                                                  │ HTTP                        │
-                                           ┌──────┴─────────┐                   │
-                                           │ cloudlist cloud │◄──────────────────┘
-                                           │ (self-hostable, │   node discovery / registration
-                                           │  see below)     │
-                                           └────────────────┘
+```mermaid
+flowchart LR
+    subgraph Local["Local LAN"]
+        X1["Xbox / PS3"]
+    end
+    subgraph Router["OpenWrt Router"]
+        D["xbslinkd"]
+    end
+    subgraph Remote["Remote Site"]
+        X2["Xbox / PS3"]
+        N["Remote node<br/>XBSlink original / xbslinkd"]
+    end
+    subgraph Cloud["Cloud"]
+        C["cloudlist server<br/>(self-hostable)"]
+    end
+
+    X1 -- "packet capture<br/>on br-lan" --> D
+    D -- "inject" --> X1
+    D -- "UDP 31415" --> N
+    N -- "UDP 31415" --> D
+    N -- "inject" --> X2
+    X2 -- "capture" --> N
+    D -- "HTTP" --> C
+    N -- "HTTP" --> C
+    C -. "node discovery / registration" .- D
 
 Features
 
