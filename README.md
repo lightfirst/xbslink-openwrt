@@ -8,7 +8,7 @@ with it directly.
 
 ```
 ┌─────────────┐   capture on br-lan  ┌──────────────┐  UDP 31415   ┌───────────────┐  inject   ┌─────────────┐
-│ Xbox / PS3  │ ───────────────────► │  OpenWrt     │ ───────────► │ Remote nodes  │ ────────► │ Xbox / PS3  │
+│ Xbox/PS3/NS │ ───────────────────► │  OpenWrt     │ ───────────► │ Remote nodes  │ ────────► │ Xbox/PS3/NS │
 │ (local LAN) │ ◄─────────────────── │  xbslinkd    │ ◄─────────── │ stock XBSlink │ ◄──────── │ (remote LAN)│
 └─────────────┘                      │  (on router) │  or peers    │  / xbslinkd   │           └─────────────┘
                                      └──────┬───────┘              └───────┬───────┘
