@@ -4,18 +4,18 @@ A port of [seuffert/XBSlink](https://github.com/seuffert/XBSlink) (C# / .NET, Xb
 
 ```mermaid
 flowchart LR
-    subgraph Local["Local LAN"]
+    subgraph Local
         X1["Xbox / PS3"]
     end
-    subgraph Router["OpenWrt Router"]
+    subgraph Router
         D["xbslinkd"]
     end
-    subgraph Remote["Remote Site"]
+    subgraph Remote
         X2["Xbox / PS3"]
         N["Remote node<br/>XBSlink original / xbslinkd"]
     end
-    subgraph Cloud["Cloud"]
-        C["cloudlist server<br/>(self-hostable)"]
+    subgraph Cloud
+        C["cloudlist server<br/>self-hostable"]
     end
 
     X1 -- "packet capture<br/>on br-lan" --> D
